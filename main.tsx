@@ -7,12 +7,12 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ReactTogether
       sessionParams={{
-        appId: import.meta.env['VITE_APP_ID'],
-        apiKey: import.meta.env['VITE_API_KEY'],
+        appId: "dev.reacttogether.neeti1",
+        apiKey: "2XpVVAOQynrrQDVb1hAxPOVptIf3Lsb747hRcRSRn4",
         // Having the two args below will make React Together immediately connect
         // to a new session. Remove them if you want users to start "offline"
-        name: import.meta.env['VITE_SESSION_NAME'],
-        password: import.meta.env['VITE_SESSION_PASSWORD'],
+        name: "neeti1",
+        password: "neeti1",
       }}
     >
       <App />
