@@ -1,9 +1,8 @@
+// ShoppingListLandingPage.tsx
 import React from 'react';
-import { useJoinUrl, useStateTogether } from 'react-together';
-import { Button } from 'primereact/button';
-import { InputText } from 'primereact/inputtext';
+import { ReactTogether } from 'react-together';
+import { useStateTogether } from 'react-together';
 import ShoppingList from './ShoppingList';
-import styles from '../../styles/ShoppingList/ShoppingListLandingPage.module.scss';
 
 interface List {
   id: number;
@@ -16,9 +15,8 @@ interface ShoppingListLandingPageProps {
 }
 
 const ShoppingListLandingPage: React.FC<ShoppingListLandingPageProps> = ({ sessionName, sessionPassword }) => {
-  const [lists, setLists] = useStateTogether<List[]>('sharedLists', []); // Using useStateTogether for shared state
+  const [lists, setLists] = useStateTogether<List[]>('sharedLists', []);
   const [newListName, setNewListName] = React.useState('');
-  const joinUrl = useJoinUrl();
 
   const addList = () => {
     if (newListName.trim() !== '') {
@@ -36,33 +34,29 @@ const ShoppingListLandingPage: React.FC<ShoppingListLandingPageProps> = ({ sessi
   };
 
   return (
-    <div className={styles['app-container']}>
-      <nav className={styles['navbar']}>
-        <h1>Our Shopping List</h1>
-      </nav>
-
-      <div className={styles['create-list-section']}>
-        <InputText
+    <ReactTogether sessionParams={{ appId: 'dev.reacttogether.neeti1',
+                                    apiKey: '2XpVVAOQynrrQDVb1hAxPOVptIf3Lsb747hRcRSRn4',
+                                    name: sessionName, 
+                                    password: sessionPassword }}>
+      <div>
+        <h1>Shopping List</h1>
+        <h1>{sessionName}{sessionPassword}</h1>
+        <input
+          type="text"
           value={newListName}
           onChange={(e) => setNewListName(e.target.value)}
           placeholder="Enter list name"
         />
-        <Button
-          label="Add List"
-          icon="pi pi-plus"
-          className={`${styles['roundedButton']} p-button-text p-button-sm`}
-          onClick={addList}
-        />
+        <button onClick={addList}>Add List</button>
+        <div>
+          {lists.map((list) => (
+            <div key={list.id}>
+              <ShoppingList id={list.id} name={list.name} onDelete={() => deleteList(list.id)} />
+            </div>
+          ))}
+        </div>
       </div>
-
-      <div className={styles['lists-container']}>
-        {lists.map((list) => (
-          <div key={list.id} className={styles['list-card']}>
-            <ShoppingList id={list.id} name={list.name} onDelete={() => deleteList(list.id)} />
-          </div>
-        ))}
-      </div>
-    </div>
+    </ReactTogether>
   );
 };
 
