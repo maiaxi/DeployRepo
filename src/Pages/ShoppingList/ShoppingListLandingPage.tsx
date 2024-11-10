@@ -1,7 +1,6 @@
 import React from 'react';
 import { useJoinUrl, useStateTogether } from 'react-together';
 import { Button } from 'primereact/button';
-
 import { InputText } from 'primereact/inputtext';
 import ShoppingList from './ShoppingList';
 import styles from '../../styles/ShoppingList/ShoppingListLandingPage.module.scss';
@@ -11,10 +10,15 @@ interface List {
   name: string;
 }
 
-const ShoppingListLandingPage: React.FC = () => {
+interface ShoppingListLandingPageProps {
+  sessionName: string;
+  sessionPassword: string;
+}
+
+const ShoppingListLandingPage: React.FC<ShoppingListLandingPageProps> = ({ sessionName, sessionPassword }) => {
   const [lists, setLists] = useStateTogether<List[]>('sharedLists', []); // Using useStateTogether for shared state
   const [newListName, setNewListName] = React.useState('');
-  const joinUrl = useJoinUrl()
+  const joinUrl = useJoinUrl();
 
   const addList = () => {
     if (newListName.trim() !== '') {
@@ -33,7 +37,6 @@ const ShoppingListLandingPage: React.FC = () => {
 
   return (
     <div className={styles['app-container']}>
-      {/* Navbar */}
       <nav className={styles['navbar']}>
         <h1>Our Shopping List</h1>
       </nav>
@@ -50,7 +53,6 @@ const ShoppingListLandingPage: React.FC = () => {
           className={`${styles['roundedButton']} p-button-text p-button-sm`}
           onClick={addList}
         />
-        {/*<p>{joinUrl}</p>*/}
       </div>
 
       <div className={styles['lists-container']}>
