@@ -32,8 +32,8 @@ $checkbox-color-off: #ccc;
 // Custom Checkbox Styles
 .customCheckbox {
   position: relative;
-  display: inline-flex;
-  align-items: center;
+  display: inline-flex; // Use inline-flex for better alignment control
+  align-items: center;  // Center-aligns checkbox contents vertically
   justify-content: center;
   width: 24px;
   height: 24px;
@@ -104,14 +104,14 @@ $checkbox-color-off: #ccc;
   flex-wrap: wrap;
 }
 
-// Styling for the item name to allow text wrapping
+// Styling for the item name to allow text overflow handling
 .itemName {
-  white-space: normal; // Allows line breaks
-  word-break: break-word; // Breaks long words to avoid overflow
-  max-width: 100%;
-  flex: 1;
-  margin-right: 1rem;
-  font-size: clamp(0.9rem, 1vw + 0.5rem, 1.25rem);
+  white-space: nowrap; // Prevent text from wrapping
+  overflow: hidden; // Hide overflowing text
+  text-overflow: ellipsis; // Show "..." for overflow
+  max-width: 100%; // Use available space
+  display: inline-block;
+  vertical-align: middle;
 }
 
 // Quantity controls for better alignment
@@ -171,6 +171,7 @@ $checkbox-color-off: #ccc;
   transition: background-color 0.2s;
   font-size: clamp(0.9rem, 1vw + 0.5rem, 1.25rem);
   margin-left: 0.5rem;
+
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -256,4 +257,15 @@ $checkbox-color-off: #ccc;
 .shoppingListItems::-webkit-scrollbar-track {
   background-color: #f0f0f0;
   border-radius: 4px;
+}
+
+// Responsive adjustments for smaller screens
+@media (max-width: 600px) {
+  .itemName {
+    font-size: 0.9rem;
+  }
+
+  .iconOnlyButton, .iconOnlyRemoveButton {
+    padding: 0.4rem 0.6rem;
+  }
 }
