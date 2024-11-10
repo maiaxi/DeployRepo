@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useStateTogether } from 'react-together';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
@@ -16,7 +16,7 @@ interface Item {
 // Define props inline instead of using ShoppingListProps interface
 const ShoppingList: React.FC<{ id: number; name: string; onDelete: () => void }> = ({ id, name, onDelete }) => {
   const [items, setItems] = useStateTogether<Item[]>(`items_${id}`, []);
-  const [inputValue, setInputValue] = useStateTogether<string>(`input_value_${id}`, '');
+  const [inputValue, setInputValue] = useState<string>(''); 
 
   const addItem = () => {
     if (inputValue.trim() !== '') {

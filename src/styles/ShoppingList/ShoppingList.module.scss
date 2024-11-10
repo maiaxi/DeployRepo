@@ -1,29 +1,18 @@
-/* Shared color variables */
+// Define shared color variables
 $navbar-button-color: #333;
 $delete-button-color: #ff0000;
 $text-color: #ffffff;
 $checkbox-color-on: #42b983;
 $checkbox-color-off: #ccc;
 
-/* Main container styling */
+// Main container for the entire shopping list, taking up 80% of the screen width
 .shoppingListContainer {
   max-width: 80vw;
   margin: 0 auto;
   padding: 1.5rem;
 }
 
-/* Navbar and title styling */
-.navbar {
-  width: 100%;
-  background-color: $navbar-button-color;
-  padding: 1rem;
-  color: $text-color;
-  text-align: center;
-  font-size: 1.75rem;
-  font-weight: bold;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-}
-
+// Container for title and delete button, aligning them in a row
 .cardTitleContainer {
   display: flex;
   align-items: center;
@@ -32,6 +21,7 @@ $checkbox-color-off: #ccc;
   margin-bottom: 1.5rem;
 }
 
+// Responsive font size for the list name title
 .cardTitle {
   font-size: clamp(1.25rem, 1.5vw + 1rem, 2rem);
   font-weight: bold;
@@ -39,7 +29,7 @@ $checkbox-color-off: #ccc;
   margin-right: 1rem;
 }
 
-/* Custom checkbox styles */
+// Custom Checkbox Styles
 .customCheckbox {
   position: relative;
   display: inline-flex;
@@ -89,7 +79,7 @@ $checkbox-color-off: #ccc;
   }
 }
 
-/* Shopping list item styling */
+// Styling for each item in the shopping list
 .shoppingListItem {
   display: flex;
   align-items: flex-start;
@@ -104,6 +94,7 @@ $checkbox-color-off: #ccc;
   flex-wrap: wrap;
 }
 
+// Item details (checkbox, name, and quantity controls)
 .itemDetails {
   display: flex;
   align-items: center;
@@ -113,16 +104,17 @@ $checkbox-color-off: #ccc;
   flex-wrap: wrap;
 }
 
+// Styling for the item name to allow text wrapping
 .itemName {
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Show "..." for overflow text */
-  max-width: 150px; /* Adjust based on layout */
+  white-space: normal; // Allows line breaks
+  word-break: break-word; // Breaks long words to avoid overflow
+  max-width: 100%;
   flex: 1;
   margin-right: 1rem;
+  font-size: clamp(0.9rem, 1vw + 0.5rem, 1.25rem);
 }
 
-/* Quantity controls styling */
+// Quantity controls for better alignment
 .quantityControls {
   display: flex;
   align-items: center;
@@ -130,6 +122,7 @@ $checkbox-color-off: #ccc;
   flex-shrink: 0;
 }
 
+// Responsive font size for quantity display
 .quantity {
   font-size: clamp(0.9rem, 1vw + 0.5rem, 1.25rem);
   width: 35px;
@@ -140,7 +133,7 @@ $checkbox-color-off: #ccc;
   background-color: #f9f9f9;
 }
 
-/* Add item input group */
+// Styling for the input group (add item section)
 .inputGroup {
   display: flex;
   margin-bottom: 1.5rem;
@@ -159,7 +152,7 @@ $checkbox-color-off: #ccc;
   }
 }
 
-/* No items message styling */
+// No items message styling
 .p-text-muted {
   text-align: center;
   color: #9e9e9e;
@@ -167,7 +160,7 @@ $checkbox-color-off: #ccc;
   margin-top: 1rem;
 }
 
-/* Button styles */
+// General rounded button styling (used for most buttons)
 .roundedButton {
   background-color: $navbar-button-color;
   color: $text-color;
@@ -178,7 +171,6 @@ $checkbox-color-off: #ccc;
   transition: background-color 0.2s;
   font-size: clamp(0.9rem, 1vw + 0.5rem, 1.25rem);
   margin-left: 0.5rem;
-
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -188,6 +180,7 @@ $checkbox-color-off: #ccc;
   }
 }
 
+// Button with only an icon, no extra gap
 .iconOnlyButton {
   background-color: $navbar-button-color;
   color: $text-color;
@@ -204,6 +197,7 @@ $checkbox-color-off: #ccc;
   }
 }
 
+// Button with only an icon for remove (delete), with specific alignment
 .iconOnlyRemoveButton {
   background-color: $delete-button-color;
   color: $text-color;
@@ -220,6 +214,12 @@ $checkbox-color-off: #ccc;
   }
 }
 
+// Smaller rounded buttons specifically for quantity controls
+.quantityControls .roundedButton {
+  padding: 0.25rem 0.75rem;
+}
+
+// Delete button styling
 .deleteButton {
   background-color: $delete-button-color;
   color: $text-color;
@@ -235,7 +235,7 @@ $checkbox-color-off: #ccc;
   }
 }
 
-/* Shopping list items container */
+// Container for the shopping list items with a scroll
 .shoppingListItems {
   max-height: 500px;
   overflow-y: auto;
@@ -243,7 +243,7 @@ $checkbox-color-off: #ccc;
   margin-bottom: 1rem;
 }
 
-/* Custom scrollbar styling */
+// Custom scrollbar styling
 .shoppingListItems::-webkit-scrollbar {
   width: 8px;
 }
@@ -256,16 +256,4 @@ $checkbox-color-off: #ccc;
 .shoppingListItems::-webkit-scrollbar-track {
   background-color: #f0f0f0;
   border-radius: 4px;
-}
-
-/* Responsive text wrapping and alignment for smaller screens */
-@media (max-width: 600px) {
-  .itemName {
-    max-width: 100px; /* Reduced width for smaller screens */
-  }
-
-  .shoppingListItem {
-    flex-direction: row;
-    align-items: center;
-  }
 }
