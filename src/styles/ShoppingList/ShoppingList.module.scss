@@ -1,18 +1,29 @@
-// Define shared color variables
+/* Shared color variables */
 $navbar-button-color: #333;
 $delete-button-color: #ff0000;
 $text-color: #ffffff;
 $checkbox-color-on: #42b983;
 $checkbox-color-off: #ccc;
 
-// Main container for the entire shopping list, taking up 80% of the screen width
+/* Main container styling */
 .shoppingListContainer {
   max-width: 80vw;
   margin: 0 auto;
   padding: 1.5rem;
 }
 
-// Container for title and delete button, aligning them in a row
+/* Navbar and title styling */
+.navbar {
+  width: 100%;
+  background-color: $navbar-button-color;
+  padding: 1rem;
+  color: $text-color;
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: bold;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 .cardTitleContainer {
   display: flex;
   align-items: center;
@@ -21,7 +32,6 @@ $checkbox-color-off: #ccc;
   margin-bottom: 1.5rem;
 }
 
-// Responsive font size for the list name title
 .cardTitle {
   font-size: clamp(1.25rem, 1.5vw + 1rem, 2rem);
   font-weight: bold;
@@ -29,7 +39,7 @@ $checkbox-color-off: #ccc;
   margin-right: 1rem;
 }
 
-// Custom Checkbox Styles
+/* Custom checkbox styles */
 .customCheckbox {
   position: relative;
   display: inline-flex;
@@ -67,9 +77,6 @@ $checkbox-color-off: #ccc;
       border: solid white;
       border-width: 0 2px 2px 0;
       transform: rotate(45deg);
-      left: 50%;
-      top: 40%;
-      transform: translate(-50%, -50%) rotate(45deg); // Center-aligns the checkmark inside the checkbox
     }
   }
 
@@ -82,11 +89,10 @@ $checkbox-color-off: #ccc;
   }
 }
 
-
-// Styling for each item in the shopping list
+/* Shopping list item styling */
 .shoppingListItem {
   display: flex;
-  align-items: flex-start; // Align items at the top for multi-line text alignment
+  align-items: flex-start;
   justify-content: space-between;
   padding: 1rem;
   border-bottom: 1px solid #e0e0e0;
@@ -98,26 +104,25 @@ $checkbox-color-off: #ccc;
   flex-wrap: wrap;
 }
 
-// Item details (checkbox, name, and quantity controls)
 .itemDetails {
   display: flex;
-  align-items: flex-start; // Ensures alignment with multi-line text
+  align-items: center;
   gap: 1rem;
   flex: 1;
   min-width: 0;
+  flex-wrap: wrap;
 }
 
-// Styling for the item name to allow text wrapping
 .itemName {
-  white-space: normal; // Allows line breaks
-  word-break: break-word;
-  max-width: 100%;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Show "..." for overflow text */
+  max-width: 150px; /* Adjust based on layout */
   flex: 1;
-  line-height: 1.3; // Adjust line height for better readability
   margin-right: 1rem;
 }
 
-// Quantity controls for better alignment
+/* Quantity controls styling */
 .quantityControls {
   display: flex;
   align-items: center;
@@ -125,7 +130,6 @@ $checkbox-color-off: #ccc;
   flex-shrink: 0;
 }
 
-// Responsive font size for quantity display
 .quantity {
   font-size: clamp(0.9rem, 1vw + 0.5rem, 1.25rem);
   width: 35px;
@@ -136,7 +140,7 @@ $checkbox-color-off: #ccc;
   background-color: #f9f9f9;
 }
 
-// Styling for the input group (add item section)
+/* Add item input group */
 .inputGroup {
   display: flex;
   margin-bottom: 1.5rem;
@@ -155,7 +159,7 @@ $checkbox-color-off: #ccc;
   }
 }
 
-// No items message styling
+/* No items message styling */
 .p-text-muted {
   text-align: center;
   color: #9e9e9e;
@@ -163,7 +167,7 @@ $checkbox-color-off: #ccc;
   margin-top: 1rem;
 }
 
-// General rounded button styling (used for most buttons)
+/* Button styles */
 .roundedButton {
   background-color: $navbar-button-color;
   color: $text-color;
@@ -184,7 +188,6 @@ $checkbox-color-off: #ccc;
   }
 }
 
-// Button with only an icon, no extra gap
 .iconOnlyButton {
   background-color: $navbar-button-color;
   color: $text-color;
@@ -201,7 +204,6 @@ $checkbox-color-off: #ccc;
   }
 }
 
-// Button with only an icon for remove (delete), with specific alignment
 .iconOnlyRemoveButton {
   background-color: $delete-button-color;
   color: $text-color;
@@ -211,25 +213,20 @@ $checkbox-color-off: #ccc;
   cursor: pointer;
   transition: background-color 0.2s;
   font-size: clamp(0.9rem, 1vw + 0.5rem, 1.25rem);
-  align-self: flex-start; // Aligns delete button at the top of the container
+  align-self: flex-start;
 
   &:hover {
     background-color: darken($delete-button-color, 10%);
   }
 }
 
-// Smaller rounded buttons specifically for quantity controls
-.quantityControls .roundedButton {
-  padding: 0.25rem 0.75rem;
-}
-
-// Delete button styling
 .deleteButton {
   background-color: $delete-button-color;
   color: $text-color;
   border: none;
   border-radius: 50px;
   padding: 0.5rem 1rem;
+  cursor: pointer;
   gap: 0.75rem;
   font-size: clamp(0.9rem, 1vw + 0.5rem, 1.25rem);
 
@@ -238,7 +235,7 @@ $checkbox-color-off: #ccc;
   }
 }
 
-// Container for the shopping list items with a scroll
+/* Shopping list items container */
 .shoppingListItems {
   max-height: 500px;
   overflow-y: auto;
@@ -246,7 +243,7 @@ $checkbox-color-off: #ccc;
   margin-bottom: 1rem;
 }
 
-// Custom scrollbar styling
+/* Custom scrollbar styling */
 .shoppingListItems::-webkit-scrollbar {
   width: 8px;
 }
@@ -259,4 +256,16 @@ $checkbox-color-off: #ccc;
 .shoppingListItems::-webkit-scrollbar-track {
   background-color: #f0f0f0;
   border-radius: 4px;
+}
+
+/* Responsive text wrapping and alignment for smaller screens */
+@media (max-width: 600px) {
+  .itemName {
+    max-width: 100px; /* Reduced width for smaller screens */
+  }
+
+  .shoppingListItem {
+    flex-direction: row;
+    align-items: center;
+  }
 }
