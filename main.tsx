@@ -1,4 +1,5 @@
 import { StrictMode } from 'react'
+import { Button } from 'primereact/button';
 import { createRoot } from 'react-dom/client'
 import { ReactTogether } from 'react-together'
 

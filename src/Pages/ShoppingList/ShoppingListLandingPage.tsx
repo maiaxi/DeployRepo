@@ -1,6 +1,7 @@
 import React from 'react';
 import { useJoinUrl, useStateTogether } from 'react-together';
 import { Button } from 'primereact/button';
+
 import { InputText } from 'primereact/inputtext';
 import ShoppingList from './ShoppingList';
 import styles from '../../styles/ShoppingList/ShoppingListLandingPage.module.scss';
@@ -49,7 +50,7 @@ const ShoppingListLandingPage: React.FC = () => {
           className={`${styles['roundedButton']} p-button-text p-button-sm`}
           onClick={addList}
         />
-        <p>{joinUrl}</p>
+        {/*<p>{joinUrl}</p>*/}
       </div>
 
       <div className={styles['lists-container']}>
