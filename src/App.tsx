@@ -1,6 +1,7 @@
 // App.tsx
 import React, { useState } from 'react';
 import ShoppingListSessionJoiner from './Pages/ShoppingList/ShoppingListSessionJoiner';
+import TripPlanSessionJoiner from './Pages/TripPlan/TripPlanSessionJoiner';
 
 const App: React.FC = () => {
   const [plannerType, setPlannerType] = useState<string | null>(null);
@@ -9,6 +10,8 @@ const App: React.FC = () => {
     switch (plannerType) {
       case 'shopping':
         return <ShoppingListSessionJoiner />;
+      case 'trip':
+        return <TripPlanSessionJoiner />;
       default:
         return (
           <div>
@@ -25,3 +28,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+
