@@ -1,8 +1,8 @@
+// ShoppingListSessionJoiner.tsx
 import React, { useState } from 'react';
-import ShoppingListLandingPage from './ShoppingListLandingPage';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { ReactTogether } from 'react-together';
+import ShoppingListSessionInitializer from './ShoppingListSessionInitializer';
 
 const ShoppingListSessionJoiner: React.FC = () => {
   const [sessionName, setSessionName] = useState('');
@@ -23,33 +23,24 @@ const ShoppingListSessionJoiner: React.FC = () => {
         <div className="session-inputs">
           <h2>Create or Join a Session</h2>
           <div className="input-group">
-            <InputText 
-              value={sessionName} 
-              onChange={(e) => setSessionName(e.target.value)} 
-              placeholder="Enter session name" 
+            <InputText
+              value={sessionName}
+              onChange={(e) => setSessionName(e.target.value)}
+              placeholder="Enter session name"
             />
           </div>
           <div className="input-group">
-            <InputText 
-              type="password" 
-              value={sessionPassword} 
-              onChange={(e) => setSessionPassword(e.target.value)} 
-              placeholder="Enter session password" 
+            <InputText
+              type="password"
+              value={sessionPassword}
+              onChange={(e) => setSessionPassword(e.target.value)}
+              placeholder="Enter session password"
             />
           </div>
           <Button label="Start Session" onClick={handleStartSession} />
         </div>
       ) : (
-        <ReactTogether
-          sessionParams={{
-            appId: import.meta.env['VITE_APP_ID'],
-            apiKey: import.meta.env['VITE_API_KEY'],
-            name: sessionName,
-            password: sessionPassword,
-          }}
-        >
-          <ShoppingListLandingPage sessionName={sessionName} sessionPassword={sessionPassword} />
-        </ReactTogether>
+        <ShoppingListSessionInitializer sessionName={sessionName} sessionPassword={sessionPassword} />
       )}
     </div>
   );
